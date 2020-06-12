@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  align-items: center;
+  background-color: #b24592;
+  background-image: linear-gradient(166deg, blueviolet, darkcyan);
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  padding: 2rem 3rem;
+  width: 90%;
+}
+
+.game-container[data-state="pre-game"] .timer {
+  opacity: 0;
+}
+.game-container[data-state="pre-game"] .restart-button, .game-container[data-state="pre-game"] .restart-button:hover, .game-container[data-state="pre-game"] .restart-button:focus {
+  background-color: #fff;
+  color: #333;
+  opacity: .6;
+}
+
+.highscore-container {
+  font-size: .9rem;
+  margin: 1rem 0;
+}
+
+.timer {
+  margin: 1rem 0;
+  transition: opacity .1s ease-in-out;
+}
+
+.letter__container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -.25rem;
+  width: calc(100% + .5rem);
+}
+
+.letter {
+  --background-color: rgba(255, 255, 255, .4);
+  background-color: var(--background-color);
+  border-radius: 3px;
+  color: #333;
+  display: block;
+  font-size: 1.5rem;
+  height: 2em;
+  line-height: 2em;
+  margin: .25rem;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 2em;
+}
+.letter[data-state=active]::before {
+  transform: scaleX(1);
+}
+.letter::before {
+  background-color: #fff;
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: 0 center;
+  transition: transform .1s ease-in-out;
+}
+.letter::after {
+  content: attr(data-letter);
+  position: relative;
+}
+
+.letter--template {
+  display: none;
+}
+
+.restart-button__container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.restart-button {
+  background-color: #fff;
+  border: 0;
+  border-radius: 6px;
+  color: #333;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: .5rem 2rem;
+  transition: background-color .15s ease-in-out;
+}
+.restart-button:hover, .restart-button:focus {
+  background-color: #f15f79;
+  color: #ffffff;
+}
